@@ -1,0 +1,13 @@
+# Environment
+.env
+
+# Output files
+scraped_results.csv
+products.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
