@@ -1,7 +1,7 @@
 """
 From Web Scraping Scripts to Web Data APIs: Complete Pipeline
 =============================================================
-Companion code for the DataCamp article by Khalid Alyahmadi.
+Companion code for the Dev.to article by Khalid Abdelaty.
 
 Before running:
     1. Copy .env.example to .env
