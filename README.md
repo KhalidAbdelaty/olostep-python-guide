@@ -31,7 +31,7 @@ This repository contains a fully working Python pipeline that demonstrates how t
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/olostep-python-guide.git
+git clone https://github.com/KhalidAbdelaty/olostep-python-guide.git
 cd olostep-python-guide
 ```
 
@@ -93,4 +93,4 @@ olostep-python-guide/
 ## Learn More
 
 - [Olostep Documentation](https://docs.olostep.com)
-- [Full Article on Dev.to]()
+- [Full Article on Dev.to](https://dev.to/khalidabdelaty/from-web-scraping-scripts-to-web-data-apis-a-practical-python-guide-4nd)

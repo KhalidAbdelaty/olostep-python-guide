@@ -153,18 +153,20 @@ def retrieve_batch_results(batch_id: str) -> list[dict]:
 # 5. Structured JSON extraction  —  llm_extract (20 credits per request)
 # ---------------------------------------------------------------------------
 
-def extract_structured(url: str, schema: dict) -> dict:
+def extract_structured(url: str, schema: dict = None) -> dict:
     """
     Extract structured data from a URL using llm_extract.
 
-    Note: schema-based llm_extract has a known bug on Olostep's end
-    that is actively being fixed. If you get a 500 extraction_error,
-    temporarily pass an empty schema ({}) as a workaround.
+    NOTE: Schema-based llm_extract has a known bug on Olostep's end (fix
+    expected within 24-36 hours). This function currently omits the schema
+    per Olostep's official recommendation — the API auto-extracts relevant
+    fields. Once the fix is deployed, pass your schema via:
+        "llm_extract": {"schema": schema}
     """
     payload = {
         "url_to_scrape": url,
         "formats": ["json"],
-        "llm_extract": {"schema": schema},
+        "llm_extract": {},  # Schemaless workaround — see docstring above
     }
     response = requests.post(
         f"{BASE_URL}/v1/scrapes", json=payload, headers=HEADERS
@@ -255,18 +257,12 @@ def main():
         "availability": {"type": "string"},
         "rating": {"type": "string"},
     }
-    try:
-        product = extract_structured(
-            "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html",
-            schema,
-        )
-        print(f"  Extracted: {json.dumps(product, indent=2)}")
-        pd.DataFrame([product]).to_csv("products.csv", index=False)
-        print("  Saved to products.csv")
-    except Exception as e:
-        print(f"  llm_extract with schema failed: {e}")
-        print("  Note: schema-based llm_extract has a known server-side bug being")
-        print("  fixed by Olostep. This step will work once the fix is deployed.")
+    product = extract_structured(
+        "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html",
+    )
+    print(f"  Extracted: {json.dumps(product, indent=2)}")
+    pd.DataFrame([product]).to_csv("products.csv", index=False)
+    print("  Saved to products.csv")
     print()
 
     print("=" * 60)
