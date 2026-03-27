@@ -1,6 +1,6 @@
 # From Web Scraping Scripts to Web Data APIs — Python Examples
 
-Companion code for the DataCamp article **"From Web Scraping Scripts to Web Data APIs: A Practical Python Guide"** by Khalid Alyahmadi.
+Companion code for the Dev.to article **"From Web Scraping Scripts to Web Data APIs: A Practical Python Guide"** by Khalid Abdelaty.
 
 This repository contains a fully working Python pipeline that demonstrates how to replace fragile scraping scripts with clean, API-driven data extraction using [Olostep](https://www.olostep.com/).
 
@@ -93,4 +93,4 @@ olostep-python-guide/
 ## Learn More
 
 - [Olostep Documentation](https://docs.olostep.com)
-- [Full Article on DataCamp](https://www.datacamp.com)
+- [Full Article on Dev.to]()
